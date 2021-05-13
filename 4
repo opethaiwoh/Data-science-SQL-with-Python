@@ -1,0 +1,8 @@
+SELECT Products.ProductID, OrderDetails.UnitPrice, OrderDetails.Quantity, OrderDetails.Discount, (Products.ProductName) AS Popular_Product, 
+SUM(OrderDetails.Quantity) AS Popular_Ordered
+FROM Products
+JOIN OrderDetails ON Products.ProductID=OrderDetails.ProductID
+JOIN Orders ON Orders.OrderId=OrderDetails.OrderID
+GROUP BY 5
+ORDER BY 6 DESC
+LIMIT 10

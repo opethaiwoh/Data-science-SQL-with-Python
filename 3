@@ -1,0 +1,7 @@
+SELECT Customers.CustomerID, OrderDetails.UnitPrice, OrderDetails.Quantity, OrderDetails.Discount, count(Customers.CompanyName) AS No_Customers, 
+Customers.Country, ROUND(SUM((UnitPrice*Quantity)*(1-Discount))) AS Spend
+FROM OrderDetails
+JOIN Orders ON OrderDetails.OrderID=Orders.OrderId
+JOIN Customers ON Customers.CustomerID=Orders.CustomerID 
+GROUP BY 6
+ORDER BY 5 DESC

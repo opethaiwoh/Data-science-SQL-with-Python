@@ -1,0 +1,6 @@
+SELECT Orders.OrderId, Employees.FirstName || ' ' || Employees.LastName AS Employees, SUM(OrderDetails.Quantity) AS Sold
+FROM Employees
+JOIN Orders ON Employees.EmployeeID=Orders.EmployeeID
+JOIN OrderDetails ON OrderDetails.OrderID=Orders.OrderId
+GROUP BY 2
+ORDER BY 3 DESC

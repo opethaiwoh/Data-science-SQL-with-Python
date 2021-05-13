@@ -1,0 +1,8 @@
+SELECT Products.ProductID, (Products.ProductName) AS Favorite_Products, MAX(OrderDetails.Quantity) AS Favorite_Orders
+FROM Products
+JOIN OrderDetails ON Products.ProductID=OrderDetails.ProductID
+JOIN Orders ON Orders.OrderId = OrderDetails.OrderID
+JOIN Customers ON Customers.CustomerID = Customers.CustomerID
+GROUP BY 2
+ORDER BY 3 DESC
+LIMIT 10

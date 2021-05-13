@@ -1,0 +1,8 @@
+SELECT OrderDetails.OrderID, Customers.CompanyName AS Top_Customers, OrderDetails.UnitPrice, OrderDetails.Quantity,
+OrderDetails.Discount, SUM(OrderDetails.Quantity) AS Ordered, ROUND(SUM((UnitPrice*Quantity)*(1-Discount))) AS Spend
+FROM OrderDetails
+JOIN Orders ON OrderDetails.OrderID = Orders.OrderId
+JOIN Customers ON Customers.CustomerID = Orders.CustomerID 
+GROUP By 2
+ORDER BY 6 DESC
+LIMIT 10
